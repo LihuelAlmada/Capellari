@@ -1,6 +1,8 @@
+import Saludos from '@/components/Saludos'
+import Counter from '@/components/Counter'
 import Image from 'next/image'
 
-export default function Home() {
+function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -29,6 +31,7 @@ export default function Home() {
           priority
         />
       </div>
+      <Counter />
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
@@ -126,6 +129,29 @@ export default function Home() {
             Las mejores heladeras del mercado
           </p>
         </a>
+        <a
+          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 bg-white m-1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+              src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png"}
+              alt="Vercel Logo"
+              className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
+              width={180}
+              height={37}
+            />
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Heladeras{' '}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            Las mejores heladeras del mercado
+          </p>
+        </a>
       </div>
       <h2 className="mb-3 text-2xl font-semibold mt-96">
         About us
@@ -140,6 +166,10 @@ export default function Home() {
       <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
         Ya van cuatro generaciones de nuestra familia Capellari, iniciamos en 1923 creando una pequeña tienda en el corazon de la ciudad de Puerto Montt, Chile 
       </p>
+
+      <Saludos/>
     </main>
   )
 }
+
+export default Home
