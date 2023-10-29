@@ -1,6 +1,5 @@
-import Saludos from '@/components/Saludos'
-import Counter from '@/components/Counter'
-import Image from 'next/image'
+import Counter from "@/components/Counter";
+import Image from "next/image";
 
 function Home() {
   return (
@@ -41,14 +40,14 @@ function Home() {
           rel="noopener noreferrer"
         >
           <Image
-          className=""
-          src="/TV.webp"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-        />
+            className=""
+            src="/TV.webp"
+            alt="Next.js Logo"
+            width={180}
+            height={37}
+          />
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Televisiones{' '}
+            Televisiones{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -65,14 +64,14 @@ function Home() {
           rel="noopener noreferrer"
         >
           <Image
-          className=""
-          src="/lavarropas.webp"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-        />
+            className=""
+            src="/lavarropas.webp"
+            alt="Next.js Logo"
+            width={180}
+            height={37}
+          />
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Lavarropas{' '}
+            Lavarropas{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -89,14 +88,14 @@ function Home() {
           rel="noopener noreferrer"
         >
           <Image
-          className=""
-          src="/aire.webp"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-        />
+            className=""
+            src="/aire.webp"
+            alt="Next.js Logo"
+            width={180}
+            height={37}
+          />
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Aires{' '}
+            Aires{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -113,14 +112,14 @@ function Home() {
           rel="noopener noreferrer"
         >
           <Image
-              src="/heladera.jpg"
-              alt="Vercel Logo"
-              className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
-              width={180}
-              height={37}
-            />
+            src="/heladera.jpg"
+            alt="Vercel Logo"
+            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
+            width={180}
+            height={37}
+          />
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Heladeras{' '}
+            Heladeras{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -136,14 +135,16 @@ function Home() {
           rel="noopener noreferrer"
         >
           <Image
-              src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png"}
-              alt="Vercel Logo"
-              className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
-              width={180}
-              height={37}
-            />
+            src={
+              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png"
+            }
+            alt="Vercel Logo"
+            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
+            width={180}
+            height={37}
+          />
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Heladeras{' '}
+            Heladeras{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -153,9 +154,8 @@ function Home() {
           </p>
         </a>
       </div>
-      <Saludos/>
     </main>
-  )
+  );
 }
 
-export default Home
+export default Home;
