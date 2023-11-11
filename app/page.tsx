@@ -1,4 +1,4 @@
-import Counter from "@/components/Counter";
+import Counter from "@/app/ui/Counter";
 import Image from "next/image";
 
 function Home() {

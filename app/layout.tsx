@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Header from "@/components/Header";
+import Header from "@/app/ui/Header";
 import { montserrat } from './ui/fonts'
 
 export const metadata: Metadata = {
