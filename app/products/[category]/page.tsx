@@ -11,10 +11,10 @@ export async function generateMetadata ({params} : Props) {
 const Products = ({params} : Props) => {
   return (
     <div
-      
     >
       You are see: {params.id}
     </div>
+    
   )
 }
 

@@ -1,4 +1,3 @@
-import Counter from "@/app/ui/Counter";
 import Image from "next/image";
 
 function Home() {
@@ -30,7 +29,6 @@ function Home() {
           priority
         />
       </div>
-      <Counter />
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
