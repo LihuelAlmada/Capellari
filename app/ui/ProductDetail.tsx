@@ -1,4 +1,5 @@
 import Button from '@/app/ui/Button'
+import Counter from '@/app/ui/Counter'
 import Image from "next/image";
 import { type Product as ProductType } from "@/app/lib/definitions";
 
@@ -22,6 +23,7 @@ const ProductDetail = ({ product }: { product: ProductType }) => {
           <p className="text-base text-zinc-500">
             {product.description}
           </p>
+          <Counter />
           <Button className="w-full h-12 rounded-md bg-zinc-900 text-zinc-50 shadow-sm dark:bg-zinc-50 dark:text-zinc-900">
             Add to Cart
           </Button>
