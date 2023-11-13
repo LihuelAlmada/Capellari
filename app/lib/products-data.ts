@@ -114,9 +114,18 @@ export const mockData = [
     description: `Enjoy the best washing machine in the world`,
     inStock: 100,
     price: 500000,
-    slug: 'atma-hga3022-oven-grill-30-liters-1500w',
+    slug: 'atma-hga3022-washing-machine-30-liters-1500w',
     image_url: 'lavarropas.webp',
     type: 'washing-machine'
-},
+  },
+  {
+    title: `The Refrigerator`,
+    description: `Enjoy the best refrigerator in the world`,
+    inStock: 100,
+    price: 700000,
+    slug: 'atma-hga3022-refrigerator-30-liters-1500w',
+    image_url: 'Heladera.jpg',
+    type: 'refrigerator'
+  },
 ]
 

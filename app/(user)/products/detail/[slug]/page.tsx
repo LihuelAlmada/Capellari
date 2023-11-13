@@ -1,16 +1,21 @@
+import ProductDetail from '@/app/ui/ProductDetail'
+import { mockData } from "@/app/lib/products-data";
+
 type Props = {
-  params: { slug: string }
-}
+  params: { slug: string };
+};
 
-const Detail = ({params} : Props) => {
-  const { slug } = params
+const ProductDetailPage = ({ params }: Props) => {
 
-  return (
-      <div className="container m-auto pt-8">
-          <h2 className="text-4xl text-bold">Product</h2>
-          <hr/>
-      </div>
-  )
-}
+  const { slug } = params;
 
-export default Detail
+  const product = mockData.find((product) => product.slug === slug)
+  
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+  
+  return <ProductDetail product={product}/>;
+};
+
+export default ProductDetailPage;

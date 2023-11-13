@@ -21,7 +21,7 @@ const Products = ({ params }: Props) => {
   return (
     <div>
       You are see: {params.category}
-      <section className="flex justify-center items-center gap-10 flex-wrap">
+      <section className="grid grid-cols-4 gap-6">
         {items.map((product) => (
           <ProductCard key={product.slug} product={product} />
         ))}

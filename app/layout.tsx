@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <Header />
         {children}
         <footer className="bg-gray-200 w-full flex flex-row justify-between">
           <div className="container m-auto py-4 flex items-center gap-4">

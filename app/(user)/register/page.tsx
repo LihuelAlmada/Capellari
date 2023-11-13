@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/app/ui/Button";
+import Button from "@/app/ui/Button";
 import {
   AtSymbolIcon,
   KeyIcon,

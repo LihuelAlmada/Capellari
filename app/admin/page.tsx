@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/app/ui/Button";
+import Button from "@/app/ui/Button";
 import { AtSymbolIcon } from "@heroicons/react/24/outline";
 
 const Admin = () => {
