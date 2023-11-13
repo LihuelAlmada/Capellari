@@ -3,6 +3,9 @@
 import { useState } from "react";
 import Button from "@/app/ui/Button";
 import { AtSymbolIcon } from "@heroicons/react/24/outline";
+import { mockData } from "@/app/lib/products-data";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Admin = () => {
   const [login, setLogin] = useState(false);
@@ -12,7 +15,47 @@ const Admin = () => {
   return (
     <>
       {login ? (
-        <div>asd</div>
+        <div>
+          
+          <Link href={"/admin/new-product"}>
+          New Product
+          </Link>
+              <div className="inline-block min-w-full align-middle">
+                {mockData?.map((product) => (
+                  <div
+                    key={product.slug}
+                    className="mb-2 w-full rounded-md bg-white p-4"
+                  >
+                    <div className="flex items-center justify-between border-b pb-4">
+                      <div>
+                        <div className="mb-2 flex items-center"></div>
+                        <p className="text-sm text-gray-500">{product.slug}</p>
+                      </div>
+                    </div>
+                    <div className="flex w-full items-center justify-between border-b py-5">
+                      <div className="flex w-1/2 flex-col">
+                        <p className="font-medium">{product.title}</p>
+                      </div>
+                      <div className="flex w-1/2 flex-col">
+                        <p className="font-medium">${product.price}</p>
+                      </div>
+                    </div>
+                    <div className="pt-4 text-sm">
+                      <p>{product.description}</p>
+                    </div>
+                    <Image
+                      alt="Sneaker Image"
+                      className="aspect-[1/1] object-cover object-center"
+                      src={`/imgs/products/${product.image_url}`}
+                      width={250}
+                      height={120}
+                    />
+                    <Button>Edit</Button>
+                  </div>
+                ))}
+              
+          </div>
+        </div>
       ) : (
         <div className="bg-gray-100 min-h-screen flex items-center justify-center">
           <div className="max-w-sm rounded-lg shadow-lg bg-white p-6 space-y-6 border border-gray-200 dark:border-gray-700">
