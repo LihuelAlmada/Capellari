@@ -11,7 +11,8 @@ const ProductosLayout = ({
                 <Link href={"/products/all"}>All</Link>
                 <Link href={"/products/tvs"}>TVs</Link>
                 <Link href={"/products/washing-machine"}>washing machine</Link>
-                <Link href={"/products/aires"}>Aires</Link>
+                <Link href={"/products/air-conditioning"}>air-conditioning</Link>
+                <Link href={"/products/ovens"}>ovens</Link>
             </nav>
             {children}
         </div>
