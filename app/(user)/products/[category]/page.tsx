@@ -1,38 +1,33 @@
-
-import { mockData } from '@/app/lib/products-data'
+import ProductCard from "@/app/ui/ProductCard";
+import { mockData } from "@/app/lib/products-data";
 
 type Props = {
-  params: { category: string }
-}
+  params: { category: string };
+};
 
-export async function generateMetadata ({params} : Props) {
+export async function generateMetadata({ params }: Props) {
   return {
-    title: `Capellari - ${params.category}`
-  }
+    title: `Capellari - ${params.category}`,
+  };
 }
 
-const Products = ({params} : Props) => {
+const Products = ({ params }: Props) => {
+  const { category } = params;
 
-  const { category } = params
-
-  console.log(params);
-  
-  const items = category === 'all'
-                    ? mockData
-                    : mockData.filter(product => product.type === category)
+  const items =
+    category === "all"
+      ? mockData
+      : mockData.filter((product) => product.type === category);
   return (
-    <div
-    >
+    <div>
       You are see: {params.category}
-
       <section className="flex justify-center items-center gap-10 flex-wrap">
-    asdasd
-                { items.map(product => <div key={product.slug}> asd {product.title} </div>) }
-                ads
-            </section>
+        {items.map((product) => (
+          <ProductCard key={product.slug} product={product} />
+        ))}
+      </section>
     </div>
-    
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

@@ -1,10 +1,10 @@
-import Link from "next/link"
-import { Button } from "@/app/ui/button"
+import Link from "next/link";
+import { Button } from "@/app/ui/Button";
 import {
   AtSymbolIcon,
   KeyIcon,
   ExclamationCircleIcon,
-} from '@heroicons/react/24/outline';
+} from "@heroicons/react/24/outline";
 const Register = () => {
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
@@ -113,8 +113,7 @@ const Register = () => {
         </div>
       </div>
     </div>
-    
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
