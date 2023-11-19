@@ -17,6 +17,10 @@ const links = [
     href: "/about",
   },
   {
+    label: "Posts",
+    href: "/posts",
+  },
+  {
     label: "Cart",
     href: "/cart",
   },
