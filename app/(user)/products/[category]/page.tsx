@@ -1,17 +1,14 @@
 import ProductCard from "@/app/ui/ProductCard";
 import { mockData } from "@/app/lib/products-data";
 
-type Props = {
-  params: { category: string };
-};
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: {params: { category: string }}) {
   return {
     title: `Capellari - ${params.category}`,
   };
 }
 
-const Products = ({ params }: Props) => {
+const Products = ({ params }: {params: { category: string }}) => {
   const { category } = params;
 
   const items =

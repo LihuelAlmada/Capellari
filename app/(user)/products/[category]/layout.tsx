@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-const ProductosLayout = ({
+const ProductsLayout = ({
   children,
 }: {
   children: React.ReactNode;
@@ -20,4 +20,4 @@ const ProductosLayout = ({
     )
 }
 
-export default ProductosLayout
+export default ProductsLayout
