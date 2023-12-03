@@ -8,7 +8,6 @@ export async function GET() {
     }
   })
   const posts = await response.json()
-  // revalidateTag('posts')
 
   return NextResponse.json(posts)
 }
@@ -16,16 +15,12 @@ export async function GET() {
 export async function POST(request : Request) {
   const { title, body, userId } = await request.json()
 
-  // Perform any necessary validation or processing
-
-  // Example: Save the post to a database
   const newPost = {
     title,
     body,
     userId
   }
 
-  // Return the newly created post
   return NextResponse.json(newPost)
 }
 

@@ -1,22 +1,22 @@
+import { mockData } from "@/app/lib/products-data"
+import { NextResponse } from "next/server"
+import { NextApiRequest } from "next/types/index"
 
-// import { type Product } from '@/lib/definitions.ts'
-// import { mockData } from "@/lib/products-data"
-// import { NextResponse } from "next/server"
 
-// type Props = {
-//   params: { category: string };
-// };
+type Props = {
+  params: { category: string };
+};
 
-// const sleep = async (timer : Number ) => new Promise((resolve) => setTimeout(resolve))
+const sleep = async (timer : Number ) => new Promise((resolve) => setTimeout(resolve))
 
-// export const GET = async (_, { params }: Props}) => {
-//   const { category } = params;
+export const GET = async (_:NextApiRequest, { params } : Props ) => {
+  const { category } = params;
     
-//     const items = category === 'all'
-//                     ? mockData
-//                     : mockData.filter(product => product.type === category)
+    const items = category === 'all'
+                    ? mockData
+                    : mockData.filter(product => product.type === category)
 
-//     await sleep(1000)
+    await sleep(1000)
 
-//     return NextResponse.json(items)
-// }
+    return NextResponse.json(items)
+}
