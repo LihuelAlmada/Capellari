@@ -1,15 +1,25 @@
 import ProductDetail from '@/app/ui/ProductDetail'
-import { mockData } from "@/app/lib/products-data";
+import { db } from "@/firebase/config"
+import { doc, getDoc } from "firebase/firestore"
+import { type Product as ProductType } from "@/app/lib/definitions";
 
 type Props = {
   params: { slug: string };
 };
 
-const ProductDetailPage = ({ params }: Props) => {
+const getProduct = async (id: string) => {
+  const docRef = doc(db, 'products', id)
+  const docSnapshot = await getDoc( docRef )
+
+  return docSnapshot.data()
+}
+
+
+const ProductDetailPage = async ({ params }: Props) => {
 
   const { slug } = params;
 
-  const product = mockData.find((product) => product.slug === slug)
+  const product: ProductType | undefined | any = await getProduct(slug)
   
   if (!product) {
     return <div>Product not found</div>;
