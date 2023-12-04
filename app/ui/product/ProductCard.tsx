@@ -2,8 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 
 const ProductCard = ({ item }: any) => {
-
-    console.log(item);
     
     return (
         <article className="basis-72 shadow-lg rounded">
