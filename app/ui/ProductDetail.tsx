@@ -13,7 +13,7 @@ const ProductDetail = ({ product }: { product: ProductType }) => {
       <Image
         alt="Sneaker Image"
         className="aspect-[1/1] object-cover object-center"
-        src={`/imgs/products/${product.image_url}`}
+        src={product.image_url}
         width={500}
         height={500}
       />

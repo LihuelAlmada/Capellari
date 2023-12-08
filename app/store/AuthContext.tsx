@@ -3,22 +3,32 @@ import { auth } from "@/firebase/config"
 import { signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 import { createContext, useContext, useEffect, useState } from "react"
 
+interface AuthContextProps {
+    createUser: any;
+    logout: any;
+    loginUser: any;
+    user: {
+        logged: boolean;
+        email: string | null;
+        uid: string | null;
+    };
+}
 
-const AuthContext = createContext()
+const AuthContext = createContext<AuthContextProps | undefined>(undefined) 
 export const useAuthContext = () => useContext(AuthContext)
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({children}: any) => {
     const [user, setUser] = useState({
         logged: false,
         email: null,
         uid: null
     })
 
-    const createUser = async (values) => {
+    const createUser = async (values: any) => {
         await createUserWithEmailAndPassword(auth, values.email, values.password)
     }
 
-    const loginUser = async (values) => {
+    const loginUser = async (values: any) => {
         await signInWithEmailAndPassword(auth, values.email, values.password)
     }
 
@@ -27,7 +37,7 @@ export const AuthProvider = ({children}) => {
     }
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, (user: any) => {
             console.log(user)
             if (user) {
                 setUser({
@@ -50,7 +60,7 @@ export const AuthProvider = ({children}) => {
             user,
             createUser,
             loginUser,
-            logout
+            logout,
         }}>
             {children}
         </AuthContext.Provider>

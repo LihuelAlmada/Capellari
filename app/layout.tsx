@@ -28,8 +28,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <AuthProvider>
-          <CartProvider>
             {children}
             <footer className="bg-gray-200 w-full flex flex-row justify-between">
               <div className="container m-auto py-4 flex items-center gap-4">
@@ -40,8 +38,6 @@ export default function RootLayout({
               </div>
               <p className="p-4 flex items-end">by Lihuel Almada</p>
             </footer>
-          </CartProvider>
-        </AuthProvider>
       </body>
     </html>
   );
