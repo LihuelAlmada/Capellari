@@ -1,7 +1,7 @@
 "use client"
 import { useState, ChangeEvent, FormEvent } from "react"
 import Button from "@/app/ui/Button";
-import { useAuthContext } from "@/app/store/AuthContext"
+import { useAuthContext } from "@/app/context/AuthContext"
 
 interface FormValues {
   email: string;

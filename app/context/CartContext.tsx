@@ -1,9 +1,10 @@
 "use client"
 import { createContext, useContext, useState, ReactNode } from "react"
+import { type Product as ProductType } from "@/app/lib/definitions";
 
 interface CartContextProps {
-  cart: any[];
-  addToCart: (product: any) => void;
+  cart: ProductType[];
+  addToCart: (product: ProductType) => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined)
@@ -21,12 +22,11 @@ interface CartProviderProps {
 }
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cart, setCart] = useState<any[]>([])
+  const [cart, setCart] = useState<ProductType[]>([])
 
-  const addToCart = (product: any) => {
+  const addToCart = (product: ProductType) => {
     setCart([...cart, product])
   }
-  console.log(cart)
 
   return (
     <CartContext.Provider value={{
