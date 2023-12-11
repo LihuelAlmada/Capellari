@@ -2,7 +2,7 @@ import Button from '@/app/ui/Button'
 import Counter from '@/app/ui/Counter'
 import Image from "next/image";
 import { type Product as ProductType } from "@/app/lib/definitions";
-import AddToCard from '@/app/ui/product/AddToCard'
+import AddToCart from '@/app/ui/product/AddToCart'
 const ProductDetail = ({ product }: { product: ProductType }) => {
 
   console.log(product);
@@ -24,8 +24,7 @@ const ProductDetail = ({ product }: { product: ProductType }) => {
           <p className="text-base text-zinc-500">
             {product.description}
           </p>
-          <Counter />
-          <AddToCard product={product} />
+          <AddToCart product={product} />
           <p className="text-xs text-zinc-500 dark:text-zinc-400">
             other comment, offers, etc
           </p>
