@@ -1,11 +1,11 @@
 "use client";
 
 import Button from "@/app/ui/Button";
-import Image from "next/image";
+import Link from "next/link";
 import { useCartContext } from "@/app/context/CartContext";
 
 const Cart = () => {
-  const { cart } = useCartContext();
+  const { cart, calculateTotalCost, removeProduct } = useCartContext();
 
   return (
     <div className="p-6 md:p-10 min-h-screen flex flex-col">
@@ -35,27 +35,29 @@ const Cart = () => {
           <td className="px-4 py-2 text-center w-1/6">{product.price}</td>
 
           <td className="h-10">
-            <Button onClick={() => {}}>Delete</Button>
+            <Button
+              onClick={() => {
+                removeProduct(product.slug);
+              }}
+            >
+              Delete
+            </Button>
           </td>
-          
         </tr>
       ))}
       <div className="border shadow-sm rounded-lg p-4 md:p-6">
         <div className="grid gap-4 md:gap-6">
           <div className="flex justify-between">
-            <p>Subtotal:</p>
-            <p className="font-medium">$199.98</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Tax:</p>
-            <p className="font-medium">$19.99</p>
-          </div>
-          <div className="flex justify-between">
             <p>Total:</p>
-            <p className="font-medium">$219.97</p>
+            <p className="font-medium">${calculateTotalCost()}</p>
           </div>
         </div>
-        <Button className="w-full mt-6 md:mt-10">Checkout</Button>
+        <Link
+          href="/cart/buy"
+          className="w-5/6 mt-6 md:mt-10 flex py-2 self-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
+        >
+          Checkout
+        </Link>
       </div>
     </div>
   );
