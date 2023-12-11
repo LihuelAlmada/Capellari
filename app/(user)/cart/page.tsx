@@ -12,39 +12,47 @@ const Cart = () => {
       <h1 className="font-bold text-2xl md:text-3xl mb-6 md:mb-10">
         Shopping Cart
       </h1>
-      <tr className="w-full h-10 flex justify-between">
-        <th className="px-4 py-2 w-3/6">Name</th>
-        <th className="px-4 py-2 w-1/6 text-center">Type</th>
-        <th className="px-4 py-2 w-1/6">Quantity</th>
-        <th className="px-4 py-2 text-center w-1/6">Price</th>
-        <th className="px-4 py-2 text-center">Action</th>
-      </tr>
-      {cart.map((product, index) => (
-        <tr
-          key={index}
-          className={
-            index % 2 === 0
-              ? "bg-gray-200 bg-opacity-50 w-full h-10 flex justify-between"
-              : "bg-blue-300  bg-opacity-50 w-full h-10 flex justify-between"
-          }
-        >
-          <td className="px-4 py-2 w-3/6">{product.title}</td>
-          <td className="px-4 py-2 w-1/6 text-center">{product.type}</td>
-          <td className="px-4 py-2 w-1/6 text-center">{product.quantity}</td>
-
-          <td className="px-4 py-2 text-center w-1/6">{product.price}</td>
-
-          <td className="h-10">
-            <Button
-              onClick={() => {
-                removeProduct(product.slug);
-              }}
+      <table>
+        <thead>
+          <tr className="w-full h-10 flex justify-between">
+            <th className="px-4 py-2 w-3/6">Name</th>
+            <th className="px-4 py-2 w-1/6 text-center">Type</th>
+            <th className="px-4 py-2 w-1/6">Quantity</th>
+            <th className="px-4 py-2 text-center w-1/6">Price</th>
+            <th className="px-4 py-2 text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cart.map((product, index) => (
+            <tr
+              key={index}
+              className={
+                index % 2 === 0
+                  ? "bg-gray-200 bg-opacity-50 w-full h-10 flex justify-between"
+                  : "bg-blue-300  bg-opacity-50 w-full h-10 flex justify-between"
+              }
             >
-              Delete
-            </Button>
-          </td>
-        </tr>
-      ))}
+              <td className="px-4 py-2 w-3/6">{product.title}</td>
+              <td className="px-4 py-2 w-1/6 text-center">{product.type}</td>
+              <td className="px-4 py-2 w-1/6 text-center">
+                {product.quantity}
+              </td>
+
+              <td className="px-4 py-2 text-center w-1/6">{product.price}</td>
+
+              <td className="h-10">
+                <Button
+                  onClick={() => {
+                    removeProduct(product.slug);
+                  }}
+                >
+                  Delete
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <div className="border shadow-sm rounded-lg p-4 md:p-6">
         <div className="grid gap-4 md:gap-6">
           <div className="flex justify-between">

@@ -5,7 +5,7 @@ import Button from '@/app/ui/Button'
 import { doc, setDoc } from "firebase/firestore"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { db, storage } from "@/firebase/config"
-
+import GoBack from "@/app/ui/GoBack";
 interface Product {
   title: string;
   description: string;
@@ -129,7 +129,10 @@ const CreateForm = () => {
           onChange={handleChange}
         />
 
+        <div className="flex justify-between">
         <Button type="submit">Send</Button>
+        <GoBack />
+        </div>
       </form>
     </div>
   )
