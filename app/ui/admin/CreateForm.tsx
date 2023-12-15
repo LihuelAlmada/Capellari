@@ -6,6 +6,8 @@ import { doc, setDoc } from "firebase/firestore"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { db, storage } from "@/firebase/config"
 import GoBack from "@/app/ui/GoBack";
+import { useRouter } from 'next/navigation'
+
 interface Product {
   title: string;
   description: string;
@@ -15,20 +17,28 @@ interface Product {
   slug: string;
 }
 
+
 const createProduct = async (values: Product, file: File) => {
+  
   const storageRef = ref(storage, values.slug)
   const fileSnapshot = await uploadBytes(storageRef, file)
 
   const fileURL = await getDownloadURL(fileSnapshot.ref)
 
   const docRef = doc(db, "products", values.slug)
+  
+
   return setDoc(docRef, {
     ...values,
     image_url: fileURL
-  }).then(() => console.log("Product created"))
+  }).then(() => {
+  })
 }
 
 const CreateForm = () => {
+
+  const router = useRouter()
+
   const [values, setValues] = useState<Product>({
     title: '',
     description: '',
@@ -53,12 +63,11 @@ const CreateForm = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(values)
-    // if (file) {
-    //   await createProduct(values, file)
-    // } else {
-    //   console.log("No file selected")
-    // } 
+    if (file) {
+      await createProduct(values, file)
+    } else {
+      console.log("No file selected")
+    } 
   }
 
   return (
@@ -131,7 +140,7 @@ const CreateForm = () => {
         />
 
         <div className="flex justify-between">
-        <Button type="submit">Send</Button>
+        <Button type="submit" onClick={() => router.push('/admin')}>Send</Button>
         <GoBack />
         </div>
       </form>
