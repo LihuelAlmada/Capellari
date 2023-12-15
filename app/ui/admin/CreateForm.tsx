@@ -24,7 +24,7 @@ const createProduct = async (values: Product, file: File) => {
   const docRef = doc(db, "products", values.slug)
   return setDoc(docRef, {
     ...values,
-    image: fileURL
+    image_url: fileURL
   }).then(() => console.log("Product created"))
 }
 
@@ -53,11 +53,12 @@ const CreateForm = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (file) {
-      await createProduct(values, file)
-    } else {
-      console.log("No file selected")
-    } 
+    console.log(values)
+    // if (file) {
+    //   await createProduct(values, file)
+    // } else {
+    //   console.log("No file selected")
+    // } 
   }
 
   return (
