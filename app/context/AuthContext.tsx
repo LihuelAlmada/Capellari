@@ -1,10 +1,11 @@
 "use client";
-import { auth } from "@/firebase/config";
+import { auth, provider } from "@/firebase/config";
 import {
   signOut,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -17,6 +18,7 @@ interface AuthContextProps {
     email: string | null;
     uid: string | null;
   };
+  googleLogin: any
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -35,16 +37,23 @@ export const AuthProvider = ({ children }: any) => {
   };
 
   const loginUser = async (values: any) => {
-    await signInWithEmailAndPassword(auth, values.email, values.password);
+    await signInWithEmailAndPassword(auth, values.email, values.password).catch((err) => {
+      console.log(err);
+    }
+    );
   };
 
   const logout = () => {
     signOut(auth);
   };
 
+  const googleLogin = async () => {
+    await signInWithPopup(auth, provider);
+  }
+
+
   useEffect(() => {
     onAuthStateChanged(auth, (user: any) => {
-      console.log(user);
       if (user) {
         setUser({
           logged: true,
@@ -68,6 +77,7 @@ export const AuthProvider = ({ children }: any) => {
         createUser,
         loginUser,
         logout,
+        googleLogin,
       }}
     >
       {children}

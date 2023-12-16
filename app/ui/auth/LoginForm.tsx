@@ -9,7 +9,7 @@ interface FormValues {
 }
 
 const LoginForm = () => {
-  const { createUser, loginUser } : any = useAuthContext()
+  const { createUser, loginUser, googleLogin } : any = useAuthContext()
 
 
   const [values, setValues] = useState<FormValues>({
@@ -52,6 +52,7 @@ const LoginForm = () => {
         />
         <Button onClick={() => loginUser(values)} className="mr-4">Login</Button>
         <Button onClick={() => createUser(values)}>Register</Button>
+        <Button onClick={googleLogin} className="mt-2 block"> Login with google</Button>
       </form>
     </div>
   )
