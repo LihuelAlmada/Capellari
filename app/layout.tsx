@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   themeColor: "#000000",
 };
 
+
 export default function RootLayout({
   children,
 }: {
@@ -29,10 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <CartProvider>
-          {children}
-          <Footer />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            {children}
+            <Footer />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
