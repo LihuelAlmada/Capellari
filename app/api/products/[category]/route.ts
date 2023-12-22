@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { NextApiRequest } from "next/types/index";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase/config";
 
@@ -10,7 +9,7 @@ type Props = {
 const sleep = async (timer: Number) =>
   new Promise((resolve) => setTimeout(resolve));
 
-export const GET = async (_: NextApiRequest, { params }: Props) => {
+export const GET = async (_: any, { params }: Props) => {
   const { category } = params;
 
   const productRef = collection(db, "products");

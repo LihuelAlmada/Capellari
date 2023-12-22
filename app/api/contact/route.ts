@@ -6,7 +6,6 @@ export const GET = async () => {
 
 export const POST = async (request : Request) => {
     const data = await request.json()
-    console.log(data)
     // TODO: create register in database
 
     return NextResponse.json("OK")

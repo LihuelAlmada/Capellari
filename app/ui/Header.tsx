@@ -30,7 +30,7 @@ const links = [
   },
   {
     label: "Login",
-    href: "/login",
+    href: "/admin",
   },
 ];
 
