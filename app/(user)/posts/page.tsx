@@ -3,7 +3,7 @@ import Link from "next/link";
 const Posts = async () => {
   const response = await fetch(`http://${process.env.VERCERL_URL}/api/posts`);
   const posts = await response.json();
-
+  
   return (
     <ul>
       {
