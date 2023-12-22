@@ -1,8 +1,8 @@
 "use client";
 
-import Button from "@/app/ui/Button";
 import Link from "next/link";
 import { useCartContext } from "@/app/context/CartContext";
+import Button from "@/app/ui/Button";
 
 const Cart = () => {
   const { cart, calculateTotalCost, removeProduct } = useCartContext();

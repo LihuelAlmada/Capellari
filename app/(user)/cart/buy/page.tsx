@@ -1,7 +1,7 @@
 "use client";
-import Button from "@/app/ui/Button";
 
 import { useCartContext } from "@/app/context/CartContext";
+import Button from "@/app/ui/Button";
 
 const Buy = () => {
   const { calculateTotalCost } = useCartContext();
