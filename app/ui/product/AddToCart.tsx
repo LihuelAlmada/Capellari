@@ -1,6 +1,5 @@
 "use client";
 import { useCartContext } from "@/app/context/CartContext";
-import Button from "@/app/ui/Button";
 import {
   type Product as ProductType,
   type ProductInCart,
@@ -28,26 +27,26 @@ const AddToCart = ({ product }: { product: ProductType }) => {
   return (
     <div>
       <div className="flex justify-center items-center gap-3">
-        <Button
+        <button
           className="rounded-full py-2 px-3 bg-blue-400 text-center text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
           onClick={decrease}
         >
           -
-        </Button>
+        </button>
         <div>{counter}</div>
-        <Button
+        <button
           className="rounded-full py-2 px-3 bg-blue-400 text-center text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
           onClick={increase}
         >
           +
-        </Button>
+        </button>
       </div>
-      <Button
+      <button
         className="w-full h-12 rounded-md bg-zinc-900 text-zinc-50 shadow-sm dark:bg-zinc-50 dark:text-zinc-900"
         onClick={() => addToCart(productInCart)}
       >
         Add to Cart
-      </Button>
+      </button>
     </div>
   );
 };

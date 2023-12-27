@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Button from "../Button";
 
 const ContactForm = () => {
   const [values, setValues] = useState({
@@ -54,9 +53,9 @@ const ContactForm = () => {
         className="resize-none p-2 w-1/2 h-24 rounded border border-blue-100 block my-4"
         onChange={handleInputChange}
       />
-      <Button type="submit" className="my-4">
+      <button type="submit" className="my-4">
         Send
-      </Button>
+      </button>
     </form>
   );
 };

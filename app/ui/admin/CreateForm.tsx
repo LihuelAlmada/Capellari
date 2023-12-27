@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, ChangeEvent, FormEvent } from "react"
-import Button from '@/app/ui/Button'
 import { doc, setDoc } from "firebase/firestore"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { db, storage } from "@/firebase/config"
@@ -140,7 +139,7 @@ const CreateForm = () => {
         />
 
         <div className="flex justify-between">
-        <Button type="submit" onClick={() => router.push('/admin')}>Send</Button>
+        <button type="submit" onClick={() => router.push('/admin')}>Send</button>
         <GoBack />
         </div>
       </form>

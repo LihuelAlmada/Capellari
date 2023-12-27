@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useCartContext } from "@/app/context/CartContext";
-import Button from "@/app/ui/Button";
 
 const Cart = () => {
   const { cart, calculateTotalCost, removeProduct } = useCartContext();
@@ -41,13 +40,13 @@ const Cart = () => {
               <td className="px-4 py-2 text-center w-1/6">{product.price}</td>
 
               <td className="h-10">
-                <Button
+                <button
                   onClick={() => {
                     removeProduct(product.slug);
                   }}
                 >
                   Delete
-                </Button>
+                </button>
               </td>
             </tr>
           ))}

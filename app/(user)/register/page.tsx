@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Button from "@/app/ui/Button";
 import {
   AtSymbolIcon,
   KeyIcon,
@@ -67,7 +66,7 @@ const Register = () => {
             <span className="text-zinc-400 dark:text-zinc-300 text-sm">OR</span>
             <hr className="flex-grow border-zinc-200 dark:border-zinc-700" />
           </div>
-          <Button className="w-full bg-[#4285F4] text-white">
+          <button className="w-full bg-[#4285F4] text-white">
             <div className="flex items-center justify-center">
               <svg
                 className=" w-5 h-5 mr-2"
@@ -89,8 +88,8 @@ const Register = () => {
               </svg>
               Register with Google
             </div>
-          </Button>
-          <Button className="w-full bg-black text-white">
+          </button>
+          <button className="w-full bg-black text-white">
             <div className="flex items-center justify-center">
               <svg
                 className=" w-5 h-5 mr-2"
@@ -109,7 +108,7 @@ const Register = () => {
               </svg>
               Register with Apple
             </div>
-          </Button>
+          </button>
         </div>
       </div>
     </div>

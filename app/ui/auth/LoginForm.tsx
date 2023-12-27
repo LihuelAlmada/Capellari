@@ -1,6 +1,5 @@
 "use client"
 import { useState, ChangeEvent, FormEvent } from "react"
-import Button from "@/app/ui/Button";
 import { useAuthContext } from "@/app/context/AuthContext"
 
 interface FormValues {
@@ -50,9 +49,9 @@ const LoginForm = () => {
           name="password"
           onChange={handleChange}
         />
-        <Button onClick={() => loginUser(values)} className="mr-4">Login</Button>
-        <Button onClick={() => createUser(values)}>Register</Button>
-        <Button onClick={googleLogin} className="mt-2 block"> Login with google</Button>
+        <button onClick={() => loginUser(values)} className="mr-4">Login</button>
+        <button onClick={() => createUser(values)}>Register</button>
+        <button onClick={googleLogin} className="mt-2 block"> Login with google</button>
       </form>
     </div>
   )
