@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server"
 
 export async function GET() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
     // cache: 'no-cache'
     next: {
       revalidate: 0
@@ -10,10 +11,15 @@ export async function GET() {
   const posts = await response.json()
 
   return NextResponse.json(posts)
+  } catch (error) {
+    console.log(error);
+    
+  }
 }
 
 export async function POST(request : Request) {
-  const { title, body, userId } = await request.json()
+  try {
+    const { title, body, userId } = await request.json()
 
   const newPost = {
     title,
@@ -22,6 +28,7 @@ export async function POST(request : Request) {
   }
 
   return NextResponse.json(newPost)
+  } catch (error) {
+    console.log(error);
+  }
 }
-
-// }

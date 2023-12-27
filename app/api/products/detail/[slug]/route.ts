@@ -7,11 +7,16 @@ type Props = {
 };
 
 export const GET = async (_: any, { params }: Props) => {
-  const { slug } = params;
+  try {
+    const { slug } = params;
 
   const docRef = doc(db, "products", slug);
 
   const docSnapshot = await getDoc(docRef);
 
   return NextResponse.json(docSnapshot.data());
+  } catch (error) {
+    console.log(error);
+    
+  }
 }

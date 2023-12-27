@@ -6,26 +6,27 @@ type Props = {
   params: { category: string };
 };
 
-const sleep = async (timer: Number) =>
-  new Promise((resolve) => setTimeout(resolve));
-
 export const GET = async (_: any, { params }: Props) => {
-  const { category } = params;
+  try {
+    const { category } = params;
 
-  const productRef = collection(db, "products");
-
-  const q =
-    category === "all"
-      ? productRef
-      : query(productRef, where("type", "==", category));
-
-  const querySnapshot = await getDocs(q);
-
-  const docs = querySnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  await sleep(1000);
-
-  return NextResponse.json(docs);
+    const productRef = collection(db, "products");
+  
+    const q =
+      category === "all"
+        ? productRef
+        : query(productRef, where("type", "==", category));
+  
+    const querySnapshot = await getDocs(q);
+  
+    const docs = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+  
+    return NextResponse.json(docs);
+  } catch (error) {
+    console.log(error);
+    
+  }
 };

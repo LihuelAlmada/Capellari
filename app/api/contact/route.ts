@@ -5,8 +5,13 @@ export const GET = async () => {
 }
 
 export const POST = async (request : Request) => {
-    const data = await request.json()
+    try {
+        const data = await request.json()
     // TODO: create register in database
 
     return NextResponse.json("OK")
+    } catch (error) {
+        console.log(error)
+        return NextResponse.json("Error")
+    }
 }
