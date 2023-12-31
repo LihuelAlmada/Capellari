@@ -17,10 +17,6 @@ const links = [
     href: "/about",
   },
   {
-    label: "Posts",
-    href: "/posts",
-  },
-  {
     label: "Contact",
     href: "/contact",
   },
