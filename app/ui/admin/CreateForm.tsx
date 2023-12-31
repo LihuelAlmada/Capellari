@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState, ChangeEvent, FormEvent } from "react"
-import { doc, setDoc } from "firebase/firestore"
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
-import { db, storage } from "@/firebase/config"
+import { useState, ChangeEvent, FormEvent } from "react";
+import { doc, setDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db, storage } from "@/firebase/config";
 import GoBack from "@/app/ui/GoBack";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 interface Product {
   title: string;
@@ -16,58 +16,55 @@ interface Product {
   slug: string;
 }
 
-
 const createProduct = async (values: Product, file: File) => {
-  
-  const storageRef = ref(storage, values.slug)
-  const fileSnapshot = await uploadBytes(storageRef, file)
+  const storageRef = ref(storage, values.slug);
+  const fileSnapshot = await uploadBytes(storageRef, file);
 
-  const fileURL = await getDownloadURL(fileSnapshot.ref)
+  const fileURL = await getDownloadURL(fileSnapshot.ref);
 
-  const docRef = doc(db, "products", values.slug)
-  
+  const docRef = doc(db, "products", values.slug);
 
   return setDoc(docRef, {
     ...values,
-    image_url: fileURL
-  }).then(() => {
-  })
-}
+    image_url: fileURL,
+  }).then(() => {});
+};
 
 const CreateForm = () => {
-
-  const router = useRouter()
+  const router = useRouter();
 
   const [values, setValues] = useState<Product>({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     inStock: 0,
     price: 0,
-    type: '',
-    slug: ''
-  })
-  const [file, setFile] = useState<File | null>(null)
+    type: "",
+    slug: "",
+  });
+  const [file, setFile] = useState<File | null>(null);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setValues({
       ...values,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0]
-    setFile(selectedFile || null)
-  }
+    const selectedFile = e.target.files?.[0];
+    setFile(selectedFile || null);
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     if (file) {
-      await createProduct(values, file)
+      await createProduct(values, file);
     } else {
-      console.log("No file selected")
-    } 
-  }
+      console.log("No file selected");
+    }
+  };
 
   return (
     <div className="container m-auto mt-6 max-w-lg">
@@ -139,12 +136,18 @@ const CreateForm = () => {
         />
 
         <div className="flex justify-between">
-        <button type="submit" onClick={() => router.push('/admin')}>Send</button>
-        <GoBack />
+          <button
+            className="flex py-2 text-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
+            type="submit"
+            onClick={() => router.push("/admin")}
+          >
+            Send
+          </button>
+          <GoBack />
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default CreateForm
+export default CreateForm;
