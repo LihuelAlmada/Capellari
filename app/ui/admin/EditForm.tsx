@@ -1,9 +1,7 @@
 "use client";
-
-import { useState, ChangeEvent, FormEvent } from "react";
-import { doc, setDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { db, storage } from "@/firebase/config";
+import { useState, useEffect } from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "@/firebase/config";
 import GoBack from "@/app/ui/GoBack";
 import { useRouter } from "next/navigation";
 
@@ -16,21 +14,20 @@ interface Product {
   slug: string;
 }
 
-const createProduct = async (values: Product, file: File) => {
-  const storageRef = ref(storage, values.slug);
-  const fileSnapshot = await uploadBytes(storageRef, file);
-
-  const fileURL = await getDownloadURL(fileSnapshot.ref);
-
-  const docRef = doc(db, "products", values.slug);
-
-  return setDoc(docRef, {
-    ...values,
-    image_url: fileURL,
-  }).then(() => {});
+const updateProduct = async (slug: any, values: any) => {
+  const docRef = doc(db, "products", slug);
+  return updateDoc(docRef, {
+    title: values.title,
+    description: values.description,
+    inStock: Number(values.inStock),
+    price: Number(values.price),
+    type: values.type,
+  }).then(() => {
+    console.log("Updated product successfully");
+  });
 };
 
-const CreateForm = () => {
+const EditForm = (product: any) => {
   const router = useRouter();
 
   const [values, setValues] = useState<Product>({
@@ -41,10 +38,22 @@ const CreateForm = () => {
     type: "",
     slug: "",
   });
+
+  useEffect(() => {
+    setValues({
+      title: product.title || "",
+      type: product.type || "",
+      price: product.price || 0,
+      inStock: product.inStock || 0,
+      description: product.description || "",
+      slug: product.slug || "",
+    });
+  }, [product]);
+
   const [file, setFile] = useState<File | null>(null);
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: any
   ) => {
     setValues({
       ...values,
@@ -52,18 +61,14 @@ const CreateForm = () => {
     });
   };
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: any) => {
     const selectedFile = e.target.files?.[0];
     setFile(selectedFile || null);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (file) {
-      await createProduct(values, file);
-    } else {
-      console.log("No file selected");
-    }
+    await updateProduct(product.slug, values);
   };
 
   return (
@@ -79,13 +84,13 @@ const CreateForm = () => {
           onChange={handleChange}
         />
 
-        <label>Image: </label>
+        {/* <label>Image: </label>
         <input
           type="file"
           accept="image/*"
           onChange={handleFileChange}
           className="p-2 rounded w-full border border-blue-100 block my-4"
-        />
+        /> */}
 
         <label>Name: </label>
         <input
@@ -150,4 +155,4 @@ const CreateForm = () => {
   );
 };
 
-export default CreateForm;
+export default EditForm;
