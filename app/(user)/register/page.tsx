@@ -66,7 +66,8 @@ const Register = () => {
             <span className="text-zinc-400 dark:text-zinc-300 text-sm">OR</span>
             <hr className="flex-grow border-zinc-200 dark:border-zinc-700" />
           </div>
-          <button className="w-full bg-[#4285F4] text-white">
+
+          <button className="w-full bg-[#4285F4] text-white flex py-2 text-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 h-10 items-center rounded-lg px-4 text-sm font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50">
             <div className="flex items-center justify-center">
               <svg
                 className=" w-5 h-5 mr-2"
@@ -89,7 +90,7 @@ const Register = () => {
               Register with Google
             </div>
           </button>
-          <button className="w-full bg-black text-white">
+          <button className="w-full flex py-2 text-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50">
             <div className="flex items-center justify-center">
               <svg
                 className=" w-5 h-5 mr-2"

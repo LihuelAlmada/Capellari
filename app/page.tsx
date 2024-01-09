@@ -5,25 +5,15 @@ function Home() {
   return (
     <>
       <Header />
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between">
         
-        <div>
-        <a
-            href="/products/all"
-            className="flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]"
-            target="_blank"
-            rel=""
-          >
-          <Image
-            className=""
-            src="/banner.webp"
-            alt="Next.js Logo"
-            width={1000}
-            height={37}
-            priority
-          />
+        
+        <a href="/products/all" target="_blank" rel="" className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 min-w-full" style={{ backgroundImage: 'url("/banner.webp")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          <h1 className="text-4xl font-semibold text-center text-white">
+            The best products at the best price
+          </h1>
           </a>
-        </div>
+        
 
         <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
           <a
@@ -35,7 +25,7 @@ function Home() {
             <Image
               className=""
               src="/TV.webp"
-              alt="Next.js Logo"
+              alt="TV Logo"
               width={180}
               height={37}
             />
@@ -59,7 +49,7 @@ function Home() {
             <Image
               className=""
               src="/lavarropas.webp"
-              alt="Next.js Logo"
+              alt="lavarropas Logo"
               width={180}
               height={37}
             />
@@ -83,7 +73,7 @@ function Home() {
             <Image
               className=""
               src="/aire.webp"
-              alt="Next.js Logo"
+              alt="aire Logo"
               width={180}
               height={37}
             />
@@ -105,8 +95,8 @@ function Home() {
             rel="noopener noreferrer"
           >
             <Image
-              src="/heladera.jpg"
-              alt="Vercel Logo"
+              src="/heladera.webp"
+              alt="heladera Logo"
               className=""
               width={180}
               height={37}
