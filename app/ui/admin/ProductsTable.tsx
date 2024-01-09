@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { db } from "@/firebase/config";
 import { collection, getDocs } from "firebase/firestore";
+import DeleteButton from '@/app/ui/DeleteButton'
 
 const getAllProducts = async () => {
   const productsRef = collection(db, "products");
@@ -67,12 +68,8 @@ const ProductsTable = async () => {
                   Edit
                 </Link>
 
-                <Link
-                  href={`/admin/delete/${product.slug}`}
-                  className="rounded bg-red-400 p-2 text-white"
-                >
-                  Delete
-                </Link>
+                <DeleteButton slug={product.slug} />
+                
               </td>
             </tr>
           ))}
