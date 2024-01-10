@@ -1,15 +1,16 @@
-import { db } from "@/firebase/config";
-import { collection, getDocs } from "firebase/firestore";
 import ProductItem from '@/app/ui/product/ProductItem'
 
-const getProducts = async () => {
-  const productsRef = collection(db, "products");
-  const querySnapshot = await getDocs(productsRef);
-  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
-};
 
 const ProductsTable = async () => {
-  const products = await getProducts();
+
+  const products = await fetch(`http://localhost:3000/api/products/all`, {
+    cache: "no-store",
+    next: {
+      tags: ["products"],
+    },
+  }).then((r) => r.json());
+
+  const sortedProducts = products.sort((a: any, b: any) => a.type.localeCompare(b.type));
 
   return (
       <table className="w-full text-xs text-left text-gray-600">
@@ -42,7 +43,7 @@ const ProductsTable = async () => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
+          {sortedProducts.map((product: any) => (
             <ProductItem key={product.slug} product={product}/>
           ))}
         </tbody>
