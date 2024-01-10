@@ -16,4 +16,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Page is Here https://capellari-git-master-lihuelalmada.vercel.app/
+Page is Here https://capellari-appliances.vercel.app/
