@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { doc, updateDoc } from "firebase/firestore";
-import { db } from "@/firebase/config";
+import { db, storage } from "@/firebase/config";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import GoBack from "@/app/ui/GoBack";
 import { useRouter } from "next/navigation";
 
@@ -14,14 +15,15 @@ interface Product {
   slug: string;
 }
 
-const updateProduct = async (slug: any, values: any) => {
-  const docRef = doc(db, "products", slug);
+const updateProduct = async (slug: any, values: any, file: any) => {
+  const storageRef = ref(storage, values.slug);
+  const fileSnapshot = await uploadBytes(storageRef, file);
+  const fileURL = await getDownloadURL(fileSnapshot.ref);
+  const docRef = doc(db, "products", values.slug);
+
   return updateDoc(docRef, {
-    title: values.title,
-    description: values.description,
-    inStock: Number(values.inStock),
-    price: Number(values.price),
-    type: values.type,
+    ...values,
+    image_url: fileURL,
   }).then(() => {
     console.log("Updated product successfully");
   });
@@ -39,18 +41,18 @@ const EditForm = (product: any) => {
     slug: "",
   });
 
+  const [file, setFile] = useState<File | null>(null);
+
   useEffect(() => {
     setValues({
-      title: product.title || "",
-      type: product.type || "",
-      price: product.price || 0,
-      inStock: product.inStock || 0,
-      description: product.description || "",
-      slug: product.slug || "",
+      title: product.product.title || "",
+      type: product.product.type || "",
+      price: product.product.price || 0,
+      inStock: product.product.inStock || 0,
+      description: product.product.description || "",
+      slug: product.product.slug,
     });
   }, [product]);
-
-  const [file, setFile] = useState<File | null>(null);
 
   const handleChange = (
     e: any
@@ -68,29 +70,27 @@ const EditForm = (product: any) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await updateProduct(product.slug, values);
+    if (file) {
+      await updateProduct(product.slug, values, file);
+    } else {
+      console.log("No file selected");
+    }
+    
   };
 
   return (
     <div className="container m-auto mt-6 max-w-lg">
       <form onSubmit={handleSubmit} className="my-12">
         <label>Slug: </label>
-        <input
-          type="text"
-          value={values.slug}
-          required
-          className="p-2 rounded w-full border border-blue-100 block my-4"
-          name="slug"
-          onChange={handleChange}
-        />
+        <label className="p-2 rounded w-full text-gray-600 block my-4">{values.slug} </label>
 
-        {/* <label>Image: </label>
+        <label>Image: </label>
         <input
           type="file"
           accept="image/*"
           onChange={handleFileChange}
           className="p-2 rounded w-full border border-blue-100 block my-4"
-        /> */}
+        />
 
         <label>Name: </label>
         <input
