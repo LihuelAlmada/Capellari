@@ -19,7 +19,7 @@ const ContactForm = () => {
   //TODO: add types
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await fetch(`https://capellari-appliances.vercel.app/api/contact`, {
+    await fetch(`http://localhost:3000/api/contact`, {
       method: "POST",
       body: JSON.stringify(values),
     });

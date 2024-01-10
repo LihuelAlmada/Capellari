@@ -6,7 +6,7 @@ type Props = {
 
 const EditPage = async ({ params }: Props) => {
   const { slug } = params;
-  const product = await fetch(`https://capellari-appliances.vercel.app/api/products/detail/${slug}`, {
+  const product = await fetch(`http://localhost:3000/api/products/detail/${slug}`, {
     cache: "no-store",
     next: {
       revalidate: 0,
