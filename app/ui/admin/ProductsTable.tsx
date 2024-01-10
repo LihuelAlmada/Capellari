@@ -2,14 +2,14 @@ import { db } from "@/firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 import ProductItem from '@/app/ui/product/ProductItem'
 
-const getAllProducts = async () => {
+const getProducts = async () => {
   const productsRef = collection(db, "products");
   const querySnapshot = await getDocs(productsRef);
   return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
 
 const ProductsTable = async () => {
-  const products = await getAllProducts();
+  const products = await getProducts();
 
   return (
       <table className="w-full text-xs text-left text-gray-600">

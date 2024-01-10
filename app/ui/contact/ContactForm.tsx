@@ -19,10 +19,11 @@ const ContactForm = () => {
   //TODO: add types
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/api/contact`, {
-      method: "POST",
-      body: JSON.stringify(values),
-    });
+    alert(JSON.stringify(`Email Sended from ${values.email}`));
+    // await fetch(`http://localhost:3000/api/contact`, {
+    //   method: "POST",
+    //   body: JSON.stringify(values),
+    // });
   };
 
   return (
