@@ -14,7 +14,6 @@ const Admin = () => {
         </Link>
         <LogoutButton />
       </div>
-
       <ProductsTable />
     </div>
   );

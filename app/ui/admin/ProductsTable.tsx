@@ -3,7 +3,7 @@ import ProductItem from '@/app/ui/product/ProductItem'
 
 const ProductsTable = async () => {
 
-  const products = await fetch(`http://localhost:3000/api/products/all`, {
+  const products = await fetch(`https://capellari-appliances.vercel.app/api/products/all`, {
     cache: "no-store",
     next: {
       tags: ["products"],
