@@ -2,13 +2,25 @@
 
 import { db } from "@/firebase/config";
 import { doc, deleteDoc } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 const deleteProduct = async (slug: string) => {
+  const result = await Swal.fire({
+    title: `Are you sure you want to delete the product ${slug}?`,
+    text: "This action will remove the product permanently.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it",
+    cancelButtonText: "Cancel",
+  });
+
   try {
-    const docRef = doc(db, "products", slug);
-    await deleteDoc(docRef);
-    console.log("Delete Product:", slug);
-    alert(`Product deleted, slug: ${slug} Reload the page` );
+    if (result.isConfirmed) {
+      const docRef = doc(db, "products", slug);
+      await deleteDoc(docRef);
+    }
   } catch (error) {
     console.error("Error deleting product:", error);
   }

@@ -6,7 +6,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "@/firebase/config";
 import GoBack from "@/app/ui/GoBack";
 import { useRouter } from "next/navigation";
-
+import Swal from "sweetalert2";
 interface Product {
   title: string;
   description: string;
@@ -61,6 +61,16 @@ const CreateForm = () => {
     e.preventDefault();
     if (file) {
       await createProduct(values, file);
+      Swal.fire({
+        toast: true,
+        icon: "success",
+        title: "Create Product Successfully",
+        animation: false,
+        position: "top-right",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
     } else {
       console.log("No file selected");
     }

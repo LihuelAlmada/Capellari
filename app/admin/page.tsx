@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LogoutButton from "@/app/ui/admin/LogoutButton";
+import ReloadPage from "@/app/ui/ReloadPage";
 import ProductsTable from "@/app/ui/admin/ProductsTable";
 
 const Admin = () => {
@@ -12,6 +13,7 @@ const Admin = () => {
         >
           New Product
         </Link>
+        <ReloadPage />
         <LogoutButton />
       </div>
       <ProductsTable />
