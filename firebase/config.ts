@@ -5,12 +5,12 @@ import { getStorage } from "firebase/storage"
 import { getAuth, GoogleAuthProvider } from "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDGWc5PF3euUrF1m2Wl4EfbmiUIoaUmH2c",
-  authDomain: "capellari-coderhouse.firebaseapp.com",
-  projectId: "capellari-coderhouse",
-  storageBucket: "capellari-coderhouse.appspot.com",
-  messagingSenderId: "686022474693",
-  appId: "1:686022474693:web:a75fc6938252eb3ad329ac"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
